@@ -48,7 +48,7 @@
 
 </head>
 <body>
-<h3 align="center">User details</h3>
+<h3 align="center">User data</h3>
 
 <table class="tg" align = "center">
   <tr>
@@ -64,7 +64,13 @@
       <td align="center">${user.id}</td>
       <td align="center">${user.name}</td>
       <td align="center">${user.age}</td>
-      <td align="center">${user.admin}</td>
+      <td align="center">
+        <c:if test="${user.admin}">
+          <input type = "checkbox" checked disabled/>
+        </c:if>
+        <c:if test="${!user.admin}">
+          <input type = "checkbox" disabled/>
+        </c:if></td>
       <td align="center">${user.date}</td>
       <td align="center"><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
       <td align="center"><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>

@@ -41,7 +41,7 @@
         }
     </style>
 </head>
-<title>Users Page</title>
+<title>User List</title>
 <body>
 <form action="../../index.jsp">
     <button type="submit" class = "tg" >< Back to main</button>
@@ -69,7 +69,13 @@
                                     <td align="center"><a href="/userData/${user.id}"
                                                           target="_blank">${user.name}</a></td>
                                     <td align="center">${user.age}</td>
-                                    <td align="center">${user.admin}</td>
+                                    <td align="center">
+                                        <c:if test="${user.admin}">
+                                            <input type = "checkbox" checked disabled/>
+                                        </c:if>
+                                        <c:if test="${!user.admin}">
+                                            <input type = "checkbox" disabled/>
+                                        </c:if></td>
                                     <td align="center">${user.date}</td>
                                     <td align="center"><a href="<c:url value='/edit/${user.id}'/>">Edit</a></td>
                                     <td align="center"><a href="<c:url value='/remove/${user.id}'/>">Delete</a></td>
@@ -83,12 +89,12 @@
                         <tr>
                             <td align="right">
                                 <form:form>
-                                    <input type = "submit" formaction='/prev' class = "tg td" name="prev" value = "<Prev">
+                                    <input type = "submit" formaction='/prev' class = "tg td" name="prev" value = "<Prev"/>
                                 </form:form>
                             </td>
                             <td>
                                 <form:form>
-                                    <input type = "submit" formaction='/next' class = "tg td" name="next" value = "Next>">
+                                    <input type = "submit" formaction='/next' class = "tg td" name="next" value = "Next>"/>
                                 </form:form>
                             </td>
                         </tr>

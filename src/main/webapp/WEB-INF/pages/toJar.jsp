@@ -12,7 +12,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Web command line</title>
+    <title>Java command line</title>
     <style type="text/css">
         .tg {
             border-collapse: collapse;
