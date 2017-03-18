@@ -98,6 +98,7 @@ public class UserDaoImpl implements UserDao {
 
     //Поиск записей по полю name
     @Override
+    @SuppressWarnings("unchecked")
     public List<User> find(String name, int rows) {
         Session session = this.sessionFactory.openSession();
         session.beginTransaction();

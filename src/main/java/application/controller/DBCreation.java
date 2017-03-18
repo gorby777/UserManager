@@ -5,7 +5,7 @@ import java.sql.*;
 /*
  * Класс для создания и наполнения БД
  */
-public class DBCreation{
+public class DBCreation {
 
     private static final String URL0 = "jdbc:mysql://localhost:3306?useSSL=false";
     private static final String URL = "jdbc:mysql://localhost:3306/test?useSSL=false";
@@ -16,7 +16,7 @@ public class DBCreation{
 
     private Connection getConnection() {
         try {
-            connection = DriverManager.getConnection(URL,LOGIN,PASSWORD);
+            connection = DriverManager.getConnection(URL, LOGIN, PASSWORD);
         } catch (SQLException e) {
             this.createDB();
             this.getConnection();
@@ -25,9 +25,9 @@ public class DBCreation{
     }
 
     //Создаём базу test и таблицу test.user
-    public void createDB() {
+    void createDB() {
         try {
-            connection = DriverManager.getConnection(URL0,LOGIN,PASSWORD);
+            connection = DriverManager.getConnection(URL0, LOGIN, PASSWORD);
             Statement statement = connection.createStatement();
             statement.addBatch("create schema if not exists test;");
             statement.addBatch("CREATE TABLE IF NOT EXISTS TEST.USER (ID INT(8) NOT NULL AUTO_INCREMENT, " +
@@ -36,11 +36,13 @@ public class DBCreation{
             statement.executeBatch();
             //Проверяем наличие данных в таблице
             ResultSet rs = statement.executeQuery("select id from test.user");
-            int allRows=0;
-            while(rs.next()){allRows++;}
-            if(allRows>0)return;
+            int allRows = 0;
+            while (rs.next()) {
+                allRows++;
+            }
+            if (allRows > 0) return;
             //Если таблица пуста заполняем её данными
-            String sql ="INSERT INTO test.user (name, age, admin, date) VALUES\n" +
+            String sql = "INSERT INTO test.user (name, age, admin, date) VALUES\n" +
                     "  ('Alex', 30, 0, '2014-10-31 16:30:40'),\n" +
                     "  ('Bob', 27, 1, '2009-05-30 08:10:00'),\n" +
                     "  ('Nick', 24, 1, '2013-08-25 14:30:27'),\n" +
